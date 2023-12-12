@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+
+  ms-discovery:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-discovery
+    ports:
+      - "8761:8761"
+    volumes:
+      - ./discovery:/app
+    working_dir: /app
+    command: "mvn spring-boot:run"
+
+  ms-gateway:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-gateway
+    depends_on:
+      - ms-article
+      - ms-user
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./gateway:/app
+    working_dir: /app
+    command: "mvn spring-boot:run"
+
+  ms-user:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-user
+    depends_on:
+      - database
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./user:/app
+    working_dir: /app
+    command: "mvn spring-boot:run"
+
+  ms-article:
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    container_name: ms-article
+    depends_on:
+      - database
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./article:/app
+    working_dir: /app
+    command: "mvn spring-boot:run"
+
+  database:
+    image: postgres:16.1-alpine
+    container_name: database
+    depends_on:
+      - ms-discovery
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: blog
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
