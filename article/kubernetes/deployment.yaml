@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ms-article-container
-          image: microservices-ms-article:latest
+          image: spring-microservices-ms-article:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8082

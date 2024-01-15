@@ -64,10 +64,10 @@ Or you can build them independently with `docker build` command.
 When the images are built, you will need to save them and pass them into the cluster with the following commands :
 
 ```bash
-docker save microservices-ms-article:latest | (eval $(minikube docker-env) && docker load)
-docker save microservices-ms-user:latest | (eval $(minikube docker-env) && docker load)
-docker save microservices-ms-discovery:latest | (eval $(minikube docker-env) && docker load)
-docker save microservices-ms-gateway:latest | (eval $(minikube docker-env) && docker load)
+docker save spring-microservices-ms-article:latest | (eval $(minikube docker-env) && docker load)
+docker save spring-microservices-ms-user:latest | (eval $(minikube docker-env) && docker load)
+docker save spring-microservices-ms-discovery:latest | (eval $(minikube docker-env) && docker load)
+docker save spring-microservices-ms-gateway:latest | (eval $(minikube docker-env) && docker load)
 ```
 
 Where `docker save` will create a tarball of the specified image, and `docker load`, combined with the `eval $(minikube

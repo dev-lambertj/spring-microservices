@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ms-user-container
-          image: microservices-ms-user:latest
+          image: spring-microservices-ms-user:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081

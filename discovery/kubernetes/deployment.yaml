@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ms-discovery-container
-          image: microservices-ms-discovery:latest
+          image: spring-microservices-ms-discovery:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8761

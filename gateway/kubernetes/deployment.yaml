@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ms-gateway-container
-          image: microservices-ms-gateway:latest
+          image: spring-microservices-ms-gateway:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8088
