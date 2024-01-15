@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-article-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-article
+  template:
+    metadata:
+      labels:
+        app: ms-article
+    spec:
+      containers:
+        - name: ms-article-container
+          image: microservices-ms-article:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8082

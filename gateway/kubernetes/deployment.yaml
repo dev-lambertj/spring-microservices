@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-gateway-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-gateway
+  template:
+    metadata:
+      labels:
+        app: ms-gateway
+    spec:
+      containers:
+        - name: ms-gateway-container
+          image: microservices-ms-gateway:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8088
